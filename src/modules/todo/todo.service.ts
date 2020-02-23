@@ -16,12 +16,14 @@ export class TodoService {
 
   async create(name: string): Promise<Todo> {
     const todo = new Todo();
-    return await this.todoRepository.save({ name });
+    todo.name = name;
+    return await this.todoRepository.save(todo);
   }
 
   async update(name: string, id: string): Promise<Todo> {
     const todo = await this.findById(id);
-    return await this.todoRepository.save({ name });
+    todo.name = name;
+    return await this.todoRepository.save(todo);
   }
 
   async delete(id: string) {
