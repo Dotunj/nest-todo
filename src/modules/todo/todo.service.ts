@@ -10,20 +10,18 @@ export class TodoService {
     @InjectRepository(Todo) private readonly todoRepository: Repository<Todo>
   ) {}
 
-  async getAllTodos() {
+  async getAllTodos(): Promise<Todo[]> {
     return await this.todoRepository.find();
   }
 
-  async create(name: string) {
+  async create(name: string): Promise<Todo> {
     const todo = new Todo();
-    todo.name = name;
-    return await this.todoRepository.save(todo);
+    return await this.todoRepository.save({ name });
   }
 
-  async update(name: string, id: string) {
+  async update(name: string, id: string): Promise<Todo> {
     const todo = await this.findById(id);
-    todo.name = name;
-    return await this.todoRepository.save(todo);
+    return await this.todoRepository.save({ name });
   }
 
   async delete(id: string) {
@@ -31,7 +29,7 @@ export class TodoService {
     return await this.todoRepository.remove(todo);
   }
 
-  async findById(id: string) {
+  async findById(id: string): Promise<Todo> {
     const todo = await this.todoRepository.findOne({ id });
     if (!todo) throw new HttpException("Todo does not exist", 404);
     return todo;
