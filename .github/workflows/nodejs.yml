@@ -30,6 +30,9 @@ jobs:
     - run: npm run test:e2e
       env:
         CI: true
-        POSTGRES_DB: test
-        POSTGRES_USER: test
-        POSTGRES_PASSWORD: test
+        DB_TYPE: ${{secrets.DB_TYPE}}
+        DB_PORT: ${{secrets.DB_PORT}}
+        DB_HOST: ${{secrets.DB_HOST}}
+        DB_USERNAME: ${{secrets.DB_USERNAME}}
+        DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+        DB_NAME: ${{secrets.DB_NAME}}
