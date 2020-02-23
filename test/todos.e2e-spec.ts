@@ -35,7 +35,7 @@ describe("Todos", () => {
           username: db.DB_USERNAME,
           password: db.DB_PASSWORD,
           database: db.DB_NAME,
-          entities: ["./**/*.entity.ts"],
+          entities: ["src/**/*.entity.ts"],
           synchronize: false
         })
       ]
