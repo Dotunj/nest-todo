@@ -36,7 +36,7 @@ describe("Todos", () => {
           password: db.DB_PASSWORD,
           database: db.DB_NAME,
           entities: ["src/**/*.entity.ts"],
-          synchronize: false
+          synchronize: true
         })
       ]
     }).compile();
